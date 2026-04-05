@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://bqjy5riog0cmo"]
+
+[ext_resource type="Script" uid="uid://pbxl4c1itarq" path="res://scripts/tagger.gd" id="1_k6yw6"]
+[ext_resource type="Script" uid="uid://dbl7pqobf427k" path="res://scripts/ai_controller_3d.gd" id="2_k6yw6"]
+[ext_resource type="Script" uid="uid://dbw3x5rse377w" path="res://scripts/Evader.gd" id="3_u7p2d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6yw6"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u7p2d"]
+material = SubResource("StandardMaterial3D_k6yw6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7p2d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6yw6"]
+size = Vector3(1.1, 1.1, 1.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sugp2"]
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k6yw6"]
+material = SubResource("StandardMaterial3D_sugp2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7p2d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xreh4"]
+material = SubResource("StandardMaterial3D_u7p2d")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k6yw6"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s56vw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s56vw"]
+material = SubResource("StandardMaterial3D_s56vw")
+size = Vector3(10, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k386k"]
+size = Vector3(10, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k386k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k386k"]
+material = SubResource("StandardMaterial3D_k386k")
+size = Vector3(11, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oy8r3"]
+size = Vector3(11, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ifht"]
+material = SubResource("StandardMaterial3D_k386k")
+size = Vector3(11, 4, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k6yw6"]
+
+[sub_resource type="Sky" id="Sky_k6yw6"]
+sky_material = SubResource("ProceduralSkyMaterial_k6yw6")
+
+[sub_resource type="Environment" id="Environment_u7p2d"]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_k6yw6")
+ambient_light_source = 3
+ambient_light_color = Color(0.96552354, 0.9303969, 0.6217272, 1)
+ambient_light_energy = 0.85
+tonemap_mode = 3
+
+[node name="Simple tag" type="Node3D" unique_id=1348611587]
+
+[node name="Tagger" type="CharacterBody3D" parent="." unique_id=1459321006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.355, 1, 0)
+script = ExtResource("1_k6yw6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tagger" unique_id=507458901]
+mesh = SubResource("BoxMesh_u7p2d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tagger" unique_id=180287719]
+shape = SubResource("BoxShape3D_u7p2d")
+
+[node name="AIController3D" type="Node3D" parent="Tagger" unique_id=1250588429]
+script = ExtResource("2_k6yw6")
+metadata/_custom_type_script = "uid://bcoxekum8facn"
+
+[node name="TaggingBox" type="Area3D" parent="Tagger" unique_id=1927874771]
+
+[node name="TaggingBox3D" type="CollisionShape3D" parent="Tagger/TaggingBox" unique_id=1825502515]
+shape = SubResource("BoxShape3D_k6yw6")
+
+[node name="Evader" type="CharacterBody3D" parent="." unique_id=37719300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.082, 1, 0)
+script = ExtResource("3_u7p2d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Evader" unique_id=265147871]
+mesh = SubResource("BoxMesh_k6yw6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Evader" unique_id=1999482896]
+shape = SubResource("BoxShape3D_u7p2d")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1963794074]
+mesh = SubResource("BoxMesh_xreh4")
+
+[node name="Floor" type="StaticBody3D" parent="Floor" unique_id=52916185]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Floor" unique_id=1996162149]
+shape = SubResource("ConcavePolygonShape3D_k6yw6")
+debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1100598799]
+transform = Transform3D(1, 0, 0, 0, 0.9126631, 0.4087128, 0, -0.4087128, 0.9126631, 0, 5.0229926, 9.111471)
+
+[node name="Back wall" type="MeshInstance3D" parent="." unique_id=927967927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5.500268)
+mesh = SubResource("BoxMesh_s56vw")
+
+[node name="Floor" type="StaticBody3D" parent="Back wall" unique_id=231372131]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back wall/Floor" unique_id=15141537]
+shape = SubResource("BoxShape3D_k386k")
+debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
+
+[node name="Left wall" type="MeshInstance3D" parent="." unique_id=42459079]
+transform = Transform3D(-0.00085525494, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, -0.00085525494, -5.5, 1.5, -0.5)
+mesh = SubResource("BoxMesh_k386k")
+
+[node name="Floor" type="StaticBody3D" parent="Left wall" unique_id=1474140515]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left wall/Floor" unique_id=1339907709]
+shape = SubResource("BoxShape3D_oy8r3")
+debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
+
+[node name="Right wall" type="MeshInstance3D" parent="." unique_id=1239418125]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5, 1.5, -0.5)
+mesh = SubResource("BoxMesh_2ifht")
+
+[node name="Floor" type="StaticBody3D" parent="Right wall" unique_id=1923919414]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right wall/Floor" unique_id=1261474110]
+shape = SubResource("BoxShape3D_oy8r3")
+debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1454909631]
+environment = SubResource("Environment_u7p2d")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1886688267]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11.709469, 0)
+light_energy = 3.218
+shadow_enabled = true
+distance_fade_enabled = true
+spot_range = 15.838
+spot_angle = 30.74
+
+[node name="Front wall" type="StaticBody3D" parent="." unique_id=1150621843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Front wall" unique_id=1253236977]
+shape = SubResource("BoxShape3D_k386k")
+debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
+
+[connection signal="body_shape_entered" from="Tagger/TaggingBox" to="Evader" method="_on_tagging_box_body_shape_entered"]
