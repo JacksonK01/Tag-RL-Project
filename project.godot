@@ -15,6 +15,10 @@ run/main_scene="uid://bqjy5riog0cmo"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://kxolf7nrtdr4"
+
 [dotnet]
 
 project/assembly_name="Tag-RL"

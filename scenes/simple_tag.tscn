@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bqjy5riog0cmo"]
 
 [ext_resource type="Script" uid="uid://pbxl4c1itarq" path="res://scripts/tagger.gd" id="1_k6yw6"]
-[ext_resource type="Script" uid="uid://dbl7pqobf427k" path="res://scripts/ai_controller_3d.gd" id="2_k6yw6"]
-[ext_resource type="Script" uid="uid://dbw3x5rse377w" path="res://scripts/Evader.gd" id="3_u7p2d"]
+[ext_resource type="Script" uid="uid://bpipwk2w82b3p" path="res://scripts/tag.gd" id="1_s56vw"]
+[ext_resource type="Script" uid="uid://juub46k6htlv" path="res://scripts/ai_controller_3d_tagger.gd" id="3_s56vw"]
+[ext_resource type="Script" uid="uid://dbw3x5rse377w" path="res://scripts/evader.gd" id="3_u7p2d"]
+[ext_resource type="Script" uid="uid://bweefsv5108wy" path="res://scripts/ai_controller_3d_evader.gd" id="5_2ifht"]
+[ext_resource type="Script" uid="uid://tt4fxcfmfavc" path="res://addons/godot_rl_agents/sync.gd" id="5_k386k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6yw6"]
 emission_enabled = true
@@ -69,6 +72,7 @@ ambient_light_energy = 0.85
 tonemap_mode = 3
 
 [node name="Simple tag" type="Node3D" unique_id=1348611587]
+script = ExtResource("1_s56vw")
 
 [node name="Tagger" type="CharacterBody3D" parent="." unique_id=1459321006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, 0)
@@ -80,14 +84,14 @@ mesh = SubResource("BoxMesh_u7p2d")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tagger" unique_id=180287719]
 shape = SubResource("BoxShape3D_u7p2d")
 
-[node name="AIController3D" type="Node3D" parent="Tagger" unique_id=1250588429]
-script = ExtResource("2_k6yw6")
-metadata/_custom_type_script = "uid://bcoxekum8facn"
-
 [node name="TaggingBox" type="Area3D" parent="Tagger" unique_id=1927874771]
 
 [node name="TaggingBox3D" type="CollisionShape3D" parent="Tagger/TaggingBox" unique_id=1825502515]
 shape = SubResource("BoxShape3D_k6yw6")
+
+[node name="AIController3DTagger" type="Node3D" parent="Tagger" unique_id=1536729386]
+script = ExtResource("3_s56vw")
+metadata/_custom_type_script = "uid://bcoxekum8facn"
 
 [node name="Evader" type="CharacterBody3D" parent="." unique_id=37719300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 0)
@@ -98,6 +102,10 @@ mesh = SubResource("BoxMesh_k6yw6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Evader" unique_id=1999482896]
 shape = SubResource("BoxShape3D_u7p2d")
+
+[node name="AIController3DEvader" type="Node3D" parent="Evader" unique_id=1607386414]
+script = ExtResource("5_2ifht")
+metadata/_custom_type_script = "uid://bcoxekum8facn"
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1963794074]
 mesh = SubResource("BoxMesh_xreh4")
@@ -158,5 +166,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Front wall" unique_id=1253236977]
 shape = SubResource("BoxShape3D_k386k")
 debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
+
+[node name="Sync" type="Node" parent="." unique_id=934922491]
+script = ExtResource("5_k386k")
+speed_up = 8.0
+metadata/_custom_type_script = "uid://tt4fxcfmfavc"
 
 [connection signal="body_shape_entered" from="Tagger/TaggingBox" to="Evader" method="_on_tagging_box_body_shape_entered"]

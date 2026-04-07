@@ -62,6 +62,9 @@ var _obs_space_training: Array[Dictionary] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !Global.should_connect:
+		return
+	
 	await get_parent().ready
 	get_tree().set_pause(true)
 	_initialize()
