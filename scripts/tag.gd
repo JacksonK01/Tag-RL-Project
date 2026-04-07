@@ -11,17 +11,12 @@ var last_dist = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var current_dist = tagger.position.distance_to(evader.position)
-	
-	var diff = current_dist - last_dist
-	evader.add_reward(diff * 2.0) 
-	tagger.add_reward(-diff * 2.0)
-	
-	#if current_dist < last_dist:
-		#tagger.add_reward(0.1)
-		#evader.add_reward(-0.1)
-	#else:
-		#tagger.add_reward(-0.1)
-		#evader.add_reward(0.1)
+	if current_dist < last_dist:
+		tagger.add_reward(0.1)
+		evader.add_reward(-0.1)
+	else:
+		tagger.add_reward(-0.1)
+		evader.add_reward(0.1)
 		
 	last_dist = current_dist
 	
