@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dbw3x5rse377w" path="res://scripts/evader.gd" id="3_u7p2d"]
 [ext_resource type="Script" uid="uid://bweefsv5108wy" path="res://scripts/ai_controller_3d_evader.gd" id="5_2ifht"]
 [ext_resource type="Script" uid="uid://tt4fxcfmfavc" path="res://addons/godot_rl_agents/sync.gd" id="5_k386k"]
+[ext_resource type="Script" uid="uid://drjbihm8mmdi6" path="res://scripts/raycast.gd" id="6_2ifht"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6yw6"]
 emission_enabled = true
@@ -75,7 +76,7 @@ tonemap_mode = 3
 script = ExtResource("1_s56vw")
 
 [node name="Tagger" type="CharacterBody3D" parent="." unique_id=1459321006]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4544578, 1, 0)
 script = ExtResource("1_k6yw6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Tagger" unique_id=507458901]
@@ -94,7 +95,7 @@ script = ExtResource("3_s56vw")
 metadata/_custom_type_script = "uid://bcoxekum8facn"
 
 [node name="Evader" type="CharacterBody3D" parent="." unique_id=37719300]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62994, 1, 0)
 script = ExtResource("3_u7p2d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Evader" unique_id=265147871]
@@ -107,7 +108,33 @@ shape = SubResource("BoxShape3D_u7p2d")
 script = ExtResource("5_2ifht")
 metadata/_custom_type_script = "uid://bcoxekum8facn"
 
+[node name="North" type="RayCast3D" parent="Evader" unique_id=1035520985]
+transform = Transform3D(0.734, 0, 0, 0, -4.371139e-08, -0.734, 0, 1, -3.208416e-08, 0, 0, -0.5)
+script = ExtResource("6_2ifht")
+
+[node name="South" type="RayCast3D" parent="Evader" unique_id=1999345751]
+transform = Transform3D(-0.734, 8.742278e-08, 0, 2.8048863e-15, 4.371139e-08, -0.734, -6.416832e-08, -1, -3.208416e-08, 0, 0, 0.5)
+
+[node name="East" type="RayCast3D" parent="Evader" unique_id=645590135]
+transform = Transform3D(8.752862e-09, -1, 3.208416e-08, 0, -4.371139e-08, -0.734, 0.734, 1.1924881e-08, -3.8259975e-16, 0.5, 0, 0)
+
+[node name="West" type="RayCast3D" parent="Evader" unique_id=196633221]
+transform = Transform3D(-3.208416e-08, 1, -3.208416e-08, 0, -4.371139e-08, -0.734, -0.734, -4.371139e-08, 1.4024431e-15, -0.5, 0, 0)
+
+[node name="NorthEast" type="RayCast3D" parent="Evader" unique_id=923842115]
+transform = Transform3D(0.5190164, -0.70710677, 2.2686928e-08, 0, -4.371139e-08, -0.734, 0.5190164, 0.70710677, -2.2686928e-08, 0.25, 0, -0.25)
+
+[node name="NorthWest" type="RayCast3D" parent="Evader" unique_id=763912253]
+transform = Transform3D(0.5190164, 0.70710677, -2.2686928e-08, 0, -4.371139e-08, -0.734, -0.5190164, 0.70710677, -2.2686928e-08, -0.25, 0, -0.25)
+
+[node name="SouthEast" type="RayCast3D" parent="Evader" unique_id=2068802568]
+transform = Transform3D(-0.5190164, 0.70710677, -2.2686928e-08, 0, -4.371139e-08, -0.734, -0.5190164, -0.70710677, 2.2686928e-08, -0.25, 0, 0.25)
+
+[node name="SouthWest" type="RayCast3D" parent="Evader" unique_id=369754685]
+transform = Transform3D(-0.51901644, -0.7071067, 2.2686924e-08, 0, -4.371139e-08, -0.734, 0.5190163, -0.7071068, 2.2686928e-08, 0.25, 0, 0.25)
+
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1963794074]
+transform = Transform3D(2.1927898, 0, 0, 0, 1, 0, 0, 0, 1.7129174, 0, 0, 0)
 mesh = SubResource("BoxMesh_xreh4")
 
 [node name="Floor" type="StaticBody3D" parent="Floor" unique_id=52916185]
@@ -117,10 +144,10 @@ shape = SubResource("ConcavePolygonShape3D_k6yw6")
 debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1100598799]
-transform = Transform3D(1, 0, 0, 0, 0.9126631, 0.4087128, 0, -0.4087128, 0.9126631, 0, 5.0229926, 9.111471)
+transform = Transform3D(1, 0, 0, 0, 0.9126631, 0.4087128, 0, -0.4087128, 0.9126631, 0, 5.7628546, 14.100846)
 
 [node name="Back wall" type="MeshInstance3D" parent="." unique_id=927967927]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5.500268)
+transform = Transform3D(2.3565412, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8.996557)
 mesh = SubResource("BoxMesh_s56vw")
 
 [node name="Floor" type="StaticBody3D" parent="Back wall" unique_id=231372131]
@@ -130,7 +157,7 @@ shape = SubResource("BoxShape3D_k386k")
 debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
 
 [node name="Left wall" type="MeshInstance3D" parent="." unique_id=42459079]
-transform = Transform3D(-0.00085525494, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, -0.00085525494, -5.5, 1.5, -0.5)
+transform = Transform3D(-0.0014047239, 0, 1.0005015, 0, 1, 0, -1.6424617, 0, -0.0008556842, -11.387103, 1.5, -0.20903301)
 mesh = SubResource("BoxMesh_k386k")
 
 [node name="Floor" type="StaticBody3D" parent="Left wall" unique_id=1474140515]
@@ -140,7 +167,7 @@ shape = SubResource("BoxShape3D_oy8r3")
 debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
 
 [node name="Right wall" type="MeshInstance3D" parent="." unique_id=1239418125]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5, 1.5, -0.5)
+transform = Transform3D(-7.620652e-08, 0, 1, 0, 1, 0, -1.7434019, 0, -4.371139e-08, 11.375873, 1.5, -0.5)
 mesh = SubResource("BoxMesh_2ifht")
 
 [node name="Floor" type="StaticBody3D" parent="Right wall" unique_id=1923919414]
@@ -153,15 +180,15 @@ debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
 environment = SubResource("Environment_u7p2d")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1886688267]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11.709469, 0)
+transform = Transform3D(2.5755162, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11.709469, 0)
 light_energy = 3.218
 shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 15.838
-spot_angle = 30.74
+spot_angle = 55.07206
 
 [node name="Front wall" type="StaticBody3D" parent="." unique_id=1150621843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
+transform = Transform3D(2.255652, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.376459)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Front wall" unique_id=1253236977]
 shape = SubResource("BoxShape3D_k386k")
@@ -171,5 +198,25 @@ debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
 script = ExtResource("5_k386k")
 speed_up = 8.0
 metadata/_custom_type_script = "uid://tt4fxcfmfavc"
+
+[node name="Block1" type="MeshInstance3D" parent="." unique_id=115083033]
+transform = Transform3D(-1.5617724e-08, 0, 0.99999994, 0, -0.29862317, 0, -0.35729188, 0, -4.3711385e-08, -0.0037727356, 1.0434484, -3.869276)
+mesh = SubResource("BoxMesh_2ifht")
+
+[node name="Floor" type="StaticBody3D" parent="Block1" unique_id=618948162]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block1/Floor" unique_id=902711830]
+shape = SubResource("BoxShape3D_oy8r3")
+debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
+
+[node name="Block2" type="MeshInstance3D" parent="." unique_id=1641865614]
+transform = Transform3D(-1.5617724e-08, 0, 0.99999994, 0, -0.29862317, 0, -0.35729188, 0, -4.3711385e-08, -0.0037727356, 1.0434484, 3.4275603)
+mesh = SubResource("BoxMesh_2ifht")
+
+[node name="Floor" type="StaticBody3D" parent="Block2" unique_id=2141788877]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block2/Floor" unique_id=1958700018]
+shape = SubResource("BoxShape3D_oy8r3")
+debug_color = Color(0.93624115, 0.062943496, 0.6060355, 0.41960785)
 
 [connection signal="body_shape_entered" from="Tagger/TaggingBox" to="Evader" method="_on_tagging_box_body_shape_entered"]

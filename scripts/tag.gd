@@ -9,14 +9,13 @@ func _ready() -> void:
 
 var last_dist = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func  _physics_process(delta: float) -> void:
+	evader.get_raycast_distances()
 	var current_dist = tagger.position.distance_to(evader.position)
 	if current_dist < last_dist:
 		tagger.add_reward(0.1)
-		evader.add_reward(-0.1)
 	else:
 		tagger.add_reward(-0.1)
-		evader.add_reward(0.1)
 		
 	last_dist = current_dist
 	
