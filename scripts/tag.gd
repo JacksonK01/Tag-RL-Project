@@ -19,6 +19,11 @@ func  _physics_process(delta: float) -> void:
 		
 	last_dist = current_dist
 	
+	if evader.has_raycast_collided:
+		evader.add_reward(-0.1)
+	else:
+		evader.add_reward(0.1)
+	
 	if current_dist <= 1.1:
 		tagger.on_tagged()
 		evader.on_tagged()

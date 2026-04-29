@@ -19,6 +19,7 @@ var start_position: Vector3
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var raycasts: Array[RayCast3D] = []
+var has_raycast_collided = true;
 
 func _ready():
 	start_position = global_transform.origin
@@ -69,10 +70,12 @@ func add_reward(amount: float) -> void:
 func get_raycast_distances() -> Dictionary:
 	var distances := {}
 	
+	#Offset is to account for the raycast starting inside the cube
+	var offset = 0.5
 	for ray in raycasts:
 		var dist: float
 		if ray.is_colliding():
-			dist = global_position.distance_to(ray.get_collision_point())
+			dist = global_position.distance_to(ray.get_collision_point()) - offset
 		else:
 			dist = ray.target_position.length()
 		
@@ -81,5 +84,5 @@ func get_raycast_distances() -> Dictionary:
 		
 		distances[ray.name] = dist
 	
-	print(distances)
+	# print(distances)
 	return distances

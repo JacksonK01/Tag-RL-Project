@@ -10,7 +10,10 @@ func get_obs() -> Dictionary:
 		tagger.position.x,
 		tagger.position.z,
 		evader.position.x,
-		evader.position.z
+		evader.position.z,
+		#Dummy values
+		0.0, 0.0, 0.0, 0.0,
+		0.0, 0.0, 0.0, 0.0
 	]
 	return {"obs":obs}
 
