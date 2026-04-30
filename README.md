@@ -14,5 +14,5 @@ To run the program yourself, it is highly recommended to follow this [Youtube tu
 - godot-rl Python library v0.8.2
 - Microsoft.ML.OnnxRuntime v1.15.1
 
-##TODO
+## TODO
 - Add videos/images to readme file
