@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	time_elapsed += delta
 	
 	var current_dist = tagger.global_position.distance_to(evader.global_position) 
-	
 	# Check for Tag
 	if current_dist <= 1.1: 
 		handle_tag()
@@ -27,6 +26,11 @@ func _physics_process(delta: float) -> void:
 	# Check for Timer
 	elif time_elapsed >= MAX_TIME:
 		handle_timeout()
+		
+	if evader.has_any_raycast_collided():
+		
+	
+	evader.raycasts_colliding.clear()
 
 func handle_tag():
 	# Reward seeker, punish runner

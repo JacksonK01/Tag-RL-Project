@@ -19,7 +19,8 @@ var start_position: Vector3
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var raycasts: Array[RayCast3D] = []
-var has_raycast_collided = true;
+# A list of true or false for when a raycast is colliding
+var raycasts_colliding: Array[bool] = [];
 
 func _ready():
 	start_position = global_transform.origin
@@ -86,3 +87,9 @@ func get_raycast_distances() -> Dictionary:
 	
 	# print(distances)
 	return distances
+	
+func has_any_raycast_collided() -> bool:
+	for has_collide in raycasts_colliding:
+		if has_collide:
+			return true
+	return false
