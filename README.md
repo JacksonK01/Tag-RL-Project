@@ -9,7 +9,7 @@ We configured three reward systems for the agents, each increasing in complexity
 To run the program yourself, it is highly recommended to follow this [Youtube tutorial](https://www.youtube.com/watch?v=f8arMv_rtUU). Note that the Godot environment is already configured, so just set up the Python part and you should be good to go. 
 
 ## Dependencies
-- Python 3.12 specifically (later versions cause issues with .NET)
+- Python v3.12 specifically (later versions cause issues with .NET)
 - Godot 4 or later (.NET version)
-- godot-rl Python library
-- Microsoft.ML.OnnxRuntime version 1.15.1
+- godot-rl Python library v0.8.2
+- Microsoft.ML.OnnxRuntime v1.15.1
