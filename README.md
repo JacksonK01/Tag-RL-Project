@@ -12,3 +12,4 @@ To run the program yourself, it is highly recommended to follow this [Youtube tu
 - Python 3.12 specifically (later versions cause issues with .NET)
 - Godot 4 or later (.NET version)
 - godot-rl Python library
+- Microsoft.ML.OnnxRuntime version 1.15.1
