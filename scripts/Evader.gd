@@ -66,7 +66,7 @@ func reset_position():
 func add_reward(amount: float) -> void:
 	if Global.ai_tagger:
 		ai_controller.reward += amount
-		print("Evader: " + str(ai_controller.reward))
+		# print("Evader: " + str(ai_controller.reward))
 		
 func get_raycast_distances() -> Dictionary:
 	var distances := {}
@@ -88,8 +88,9 @@ func get_raycast_distances() -> Dictionary:
 	# print(distances)
 	return distances
 	
-func has_any_raycast_collided() -> bool:
+func get_amount_raycast_collided() -> int:
+	var count = 0
 	for has_collide in raycasts_colliding:
 		if has_collide:
-			return true
-	return false
+			count += 1
+	return count

@@ -50,4 +50,4 @@ func reset_position():
 func add_reward(amount: float) -> void:
 	if Global.ai_tagger:
 		ai_controller.reward += amount
-		print("Tagger: " + str(ai_controller.reward))
+		# print("Tagger: " + str(ai_controller.reward))
