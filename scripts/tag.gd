@@ -139,6 +139,11 @@ func handle_tag():
 	evader.add_reward(-WIN_REWARD)
 	
 	log_statistics("tagger")
+	
+	if games_played >= 2000:
+		save_statistics_to_csv()
+		get_tree().quit()
+		
 	reset_arena()
 
 func handle_timeout():
@@ -151,6 +156,11 @@ func handle_timeout():
 	evader.add_reward(WIN_REWARD)
 	
 	log_statistics("evader")
+	
+	if games_played >= 2000:
+		save_statistics_to_csv()
+		get_tree().quit()
+		
 	reset_arena()
 
 func reset_arena():
