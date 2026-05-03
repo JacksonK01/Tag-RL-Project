@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pbxl4c1itarq" path="res://scripts/tagger.gd" id="1_k6yw6"]
 [ext_resource type="Script" uid="uid://bpipwk2w82b3p" path="res://scripts/tag.gd" id="1_s56vw"]
 [ext_resource type="Script" uid="uid://juub46k6htlv" path="res://scripts/ai_controller_3d_tagger.gd" id="3_s56vw"]
-[ext_resource type="Script" uid="uid://dbw3x5rse377w" path="res://scripts/evader.gd" id="3_u7p2d"]
+[ext_resource type="Script" uid="uid://dbw3x5rse377w" path="res://scripts/Evader.gd" id="3_u7p2d"]
 [ext_resource type="Script" uid="uid://bweefsv5108wy" path="res://scripts/ai_controller_3d_evader.gd" id="5_2ifht"]
 [ext_resource type="Script" uid="uid://tt4fxcfmfavc" path="res://addons/godot_rl_agents/sync.gd" id="5_k386k"]
 [ext_resource type="Script" uid="uid://drjbihm8mmdi6" path="res://scripts/raycast.gd" id="6_2ifht"]
@@ -74,6 +74,8 @@ size = Vector3(11, 4, 1)
 
 [node name="Simple tag" type="Node3D" unique_id=1348611587]
 script = ExtResource("1_s56vw")
+tagger_reward_mode = 0
+evader_reward_mode = 0
 
 [node name="Tagger" type="CharacterBody3D" parent="." unique_id=1459321006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4544578, 1, 0)
