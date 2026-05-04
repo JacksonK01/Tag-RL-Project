@@ -32,4 +32,4 @@ To ensure compatibility between the .NET environment and the ONNX models, the fo
 
 **Video Demo**: [Watch the agents in action](https://youtu.be/piHB9InAK7c)
 
-For a more detailed analysis of our findings, please refer to our project paper.
+For a more detailed analysis of our findings, please refer to our [project paper](https://github.com/JacksonK01/Tag-RL-Project/blob/main/Project%20Paper.pdf).
