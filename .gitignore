@@ -6,6 +6,8 @@
 .import/
 export.cfg
 export_credentials.cfg
+*.gd.uid
+*.tmp
 
 # Imported translations (automatically generated from CSV files)
 *.translation
